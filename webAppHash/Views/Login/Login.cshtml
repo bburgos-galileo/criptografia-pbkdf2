@@ -1,0 +1,56 @@
+﻿@model webAppHash.Models.Usuarios;
+
+@{
+    Layout = null;
+}
+
+<html lang="es">
+<!--begin::Head-->
+<head>
+    <base href="../../../../">
+    <meta charset="utf-8">
+    <title>Ingreso</title>
+    <link rel="icon" type="image/x-icon" href="~/images/guate.ico">
+    <meta name="description" content="Login Page TRIVIA">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#563d7c">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/signin.css" asp-append-version="true" />
+
+</head>
+
+
+<body style="background-color: #666!important;" class="text-center">
+
+
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-floating", Id = "frmLogin", autocomplete = "off" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <main class="form-signin" style="background-color:#FFC107!important">
+            <h1 class="h3 mb-3 fw-normal">Ingrese sus credenciales</h1>
+           @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="form-floating">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Usuario", autocomplete = "off", id = "txtUser" })
+                <label for="txtUser">Usuario</label>
+            </div>
+            <div class="form-floating">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control mt-1", placeholder = "Contraseña", autocomplete = "off", id = "txtPass" })
+                <label for="txtPass">Contraseña</label>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button id="btnIngreso" class="btn btn-sm btn-primary btn-block" type="submit">Ingresar</button>
+                <p class="message">¿No tienes Usuario? <a class="btn btn-link" href="@Url.Action("Registrar","Login")">Registrate</a></p>
+            </div>
+        </main>
+
+    }
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

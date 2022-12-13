@@ -1,0 +1,80 @@
+﻿@model webAppHash.Models.Usuarios;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <base href="../../../../">
+    <meta charset="utf-8">
+    <title>Registro de Usuarios</title>
+    <link rel="icon" type="image/x-icon" href="~/images/guate.ico">
+    <meta name="description" content="Registro Page TRIVIA">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#563d7c">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+</head>
+<body style="background-color: #666!important;">
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-6 mx-auto">
+                <div class="card border-success mt-5">
+                    @using (Html.BeginForm("Registrar", "Login", FormMethod.Post, new { @class = "form-horizontal bg-light", Id = "frmRegistrar", role = "form", @autocomplete = "off" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="card-header align-content-center text-center bg-primary d-block">
+                            <h4 class="mb-3">Creación de Usuarios</h4>
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row g-5">
+
+                                <div class="">
+                                    
+                                    <div class="col-sm-6">
+                                        <label asp-for="Name" data- class="form-label font-weight-bold text-success"></label>
+                                        <input asp-for="Name" class="form-control form-control-sm" autocomplete="off" />
+                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="col-sm-6"></div>
+
+                                    <div class="col-sm-6">
+                                        <label asp-for="Password" class="form-label font-weight-bold text-success"></label>
+                                        <input asp-for="Password" class="form-control form-control-sm" autocomplete="off" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-warning mt-2">
+                            <div class="text-end">
+                                <input id="btnGrabar" type="submit" value="Grabar" class="btn btn-lg btn-group-lg btn-outline-primary" />
+                                <a href="@Url.Action("Login", "Login")" class="btn btn-lg btn-group-lg btn-outline-success ms-2">Regresar</a>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
